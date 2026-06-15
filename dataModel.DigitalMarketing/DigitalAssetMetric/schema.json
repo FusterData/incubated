@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/schema#",
-  "$schemaVersion": "1.3.0",
+  "$schemaVersion": "1.4.0",
   "$id": "https://smart-data-models.github.io/dataModel.DigitalMarketing/DigitalAssetMetric/schema.json",
   "title": "Smart Data Models - DigitalAssetMetric",
   "description": "A digital marketing observation of a DigitalAsset for a specific date and temporal granularity (daily/monthly/quarterly/yearly). Includes traffic, engagement, e-commerce, organic-social and paid-ads metrics. Metrics that admit segmentation by acquisition channel group are arrays of {channelGroup, value}; the rest are scalars. Non-applicable metrics are omitted (sparse schema).",
@@ -320,6 +320,18 @@
     "adsFollows": {
       "type": "integer",
       "description": "Property. Paid. New follows attributed to paid placements."
+    },
+    "adsConversionsValue": {
+      "type": "number",
+      "description": "Property. Paid. Total monetary value attributed to ad conversions. Emit with `unitCode` (default EUR)."
+    },
+    "adsReactions": {
+      "type": "integer",
+      "description": "Property. Paid. Total reactions (sentiment emojis: Like, Love, Haha, Wow, Sad, Angry) on a paid post."
+    },
+    "organicContentPublications": {
+      "type": "integer",
+      "description": "Property. Organic. Total count of content pieces published organically in the period."
     }
   },
   "required": [
