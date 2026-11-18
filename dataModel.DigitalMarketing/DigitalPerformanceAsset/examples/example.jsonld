@@ -1,0 +1,12 @@
+{
+  "id": "urn:ngsi-ld:DigitalPerformanceAsset:Acme-GoogleAds",
+  "type": "DigitalPerformanceAsset",
+  "name": "Acme Holdings S.L. Google Ads",
+  "digitalAssetKind": "PaidAds",
+  "refBrand": "urn:ngsi-ld:Brand:Acme",
+  "refSoftwareApplication": "urn:ngsi-ld:SoftwareApplication:GoogleAds",
+  "@context": [
+    "https://smart-data-models.github.io/dataModel.DigitalMarketing/context.jsonld",
+    "https://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context-v1.7.jsonld"
+  ]
+}
