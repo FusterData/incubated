@@ -1,0 +1,119 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://smart-data-models.github.io/dataModel.DigitalMarketing/DigitalPerformanceAssetMetric/schema.json",
+  "title": "Smart Data Models - DigitalPerformanceAssetMetric schema",
+  "description": "A campaign-level observation of the performance of a paid-media campaign that runs on a DigitalPerformanceAsset (advertising account). There is one entity per campaign and one observation per day. Metric values are cumulative totals of the campaign up to dateObserved, so the daily increment is the difference between two consecutive observations. The identifier does not include the date: the context broker keeps the latest observation and a time-series store keeps the history indexed by dateObserved.",
+  "modelTags": "DigitalMarketing,PaidMedia,ESFERION",
+  "derivedFrom": "https://smart-data-models.github.io/dataModel.DigitalMarketing/DigitalAssetMetric/schema.json",
+  "license": "https://github.com/smart-data-models/dataModel.DigitalMarketing/blob/master/LICENSE.md",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"
+    },
+    {
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "DigitalPerformanceAssetMetric"
+          ],
+          "description": "Property. NGSI Entity type. It has to be DigitalPerformanceAssetMetric"
+        },
+        "dateObserved": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Property. Model:'https://schema.org/DateTime'. Day the observation refers to, expressed as the start of the day in UTC (ISO 8601). Metric values are cumulative up to this date"
+        },
+        "temporalResolution": {
+          "type": "string",
+          "enum": [
+            "P1D"
+          ],
+          "description": "Property. Model:'https://schema.org/Text'. ISO 8601 duration with the periodicity of the observations. Enum:'P1D'"
+        },
+        "refDigitalPerformanceAsset": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256,
+              "pattern": "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$",
+              "description": "Property. Identifier format of any NGSI entity"
+            },
+            {
+              "type": "string",
+              "format": "uri",
+              "description": "Property. Identifier format of any NGSI entity"
+            }
+          ],
+          "description": "Relationship. Model:'https://schema.org/URL'. Identifier of the DigitalPerformanceAsset (advertising account) the campaign belongs to"
+        },
+        "refDataProvider": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256,
+              "pattern": "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$",
+              "description": "Property. Identifier format of any NGSI entity"
+            },
+            {
+              "type": "string",
+              "format": "uri",
+              "description": "Property. Identifier format of any NGSI entity"
+            }
+          ],
+          "description": "Relationship. Model:'https://schema.org/URL'. Identifier of the DataProvider (technical pipeline) that supplied this observation"
+        },
+        "campaignId": {
+          "type": "string",
+          "description": "Property. Model:'https://schema.org/Text'. Native identifier of the campaign in the advertising platform"
+        },
+        "campaignType": {
+          "type": "string",
+          "description": "Property. Model:'https://schema.org/Text'. Type of the campaign as reported by the advertising platform, without translation. Examples are SEARCH or PERFORMANCE_MAX (Google Ads channel type), Leads or Ventas (Meta Ads normalized objective) and LEAD_GENERATION or BRAND_AWARENESS (LinkedIn Ads objective type). Consumers typically map it to a funnel stage"
+        },
+        "accountRef": {
+          "type": "string",
+          "description": "Property. Model:'https://schema.org/Text'. Native identifier of the advertising account in the platform. Omitted when the platform data does not provide it"
+        },
+        "adsSpend": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Property. Model:'https://schema.org/Number'. Units:'EUR'. Advertising spend. Cumulative total of the campaign up to dateObserved, not the increment of the day. Monetary value, the currency is given with unitCode (ISO 4217)"
+        },
+        "adsImpressions": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Property. Model:'https://schema.org/Number'. Ad impressions. Cumulative total of the campaign up to dateObserved, not the increment of the day"
+        },
+        "adsClicks": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Property. Model:'https://schema.org/Number'. Ad clicks that lead to the advertiser destination (outbound or landing-page clicks where the platform distinguishes them). Cumulative total of the campaign up to dateObserved, not the increment of the day"
+        },
+        "adsConversions": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Property. Model:'https://schema.org/Number'. Conversions attributed to the campaign, according to the objective of the campaign. Cumulative total of the campaign up to dateObserved, not the increment of the day"
+        },
+        "adsConversionsValue": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Property. Model:'https://schema.org/Number'. Units:'EUR'. Monetary value attributed to the conversions of the campaign. Cumulative total of the campaign up to dateObserved, not the increment of the day. Monetary value, the currency is given with unitCode (ISO 4217)"
+        }
+      }
+    }
+  ],
+  "required": [
+    "id",
+    "type",
+    "dateObserved",
+    "temporalResolution",
+    "refDigitalPerformanceAsset",
+    "refDataProvider",
+    "campaignId"
+  ]
+}

@@ -1,0 +1,9 @@
+description: This is a compilation list of the current adopters of the data model DigitalPerformanceAssetMetric of the Subject dataModel.DigitalMarketing. All fields are non mandatory. More info at https://smart-data-models.github.io/data-models/templates/dataModel/ADOPTERS.yaml
+currentAdopters:
+-
+ adopter: ESFERION use case
+ description: Investment optimisation of paid-media campaigns. Participating companies publish the daily cumulative performance of each of their Google Ads, Meta Ads and LinkedIn Ads campaigns; the service trains forecasting models on the resulting time series and recommends how to distribute the advertising budget.
+ organization: LIN3S B2B (promoter and owner of the ESFERION use case)
+ project: ESFERION, deployed on the ARIADNE Data Space (https://ariadnedata.eu)
+ comments: In production. 41 companies, 759 campaigns and more than 190,000 observations published (November 2026).
+ startDate: '2026-07-07'

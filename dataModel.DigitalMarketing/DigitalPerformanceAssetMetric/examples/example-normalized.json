@@ -1,0 +1,64 @@
+{
+  "id": "urn:ngsi-ld:DigitalPerformanceAssetMetric:Acme:GoogleAds:20481516234:P1D",
+  "type": "DigitalPerformanceAssetMetric",
+  "dateObserved": {
+    "type": "DateTime",
+    "value": "2026-09-14T00:00:00Z"
+  },
+  "temporalResolution": {
+    "type": "Text",
+    "value": "P1D"
+  },
+  "refDigitalPerformanceAsset": {
+    "type": "Text",
+    "value": "urn:ngsi-ld:DigitalPerformanceAsset:Acme-GoogleAds"
+  },
+  "refDataProvider": {
+    "type": "Text",
+    "value": "urn:ngsi-ld:DataProvider:Acme-Internal-Pipeline"
+  },
+  "campaignId": {
+    "type": "Text",
+    "value": "20481516234"
+  },
+  "campaignType": {
+    "type": "Text",
+    "value": "SEARCH"
+  },
+  "accountRef": {
+    "type": "Text",
+    "value": "1234567890"
+  },
+  "adsSpend": {
+    "type": "Number",
+    "value": 1842.37,
+    "metadata": {
+      "unitCode": {
+        "type": "Text",
+        "value": "EUR"
+      }
+    }
+  },
+  "adsImpressions": {
+    "type": "Number",
+    "value": 48210
+  },
+  "adsClicks": {
+    "type": "Number",
+    "value": 2377
+  },
+  "adsConversions": {
+    "type": "Number",
+    "value": 58
+  },
+  "adsConversionsValue": {
+    "type": "Number",
+    "value": 6310.5,
+    "metadata": {
+      "unitCode": {
+        "type": "Text",
+        "value": "EUR"
+      }
+    }
+  }
+}

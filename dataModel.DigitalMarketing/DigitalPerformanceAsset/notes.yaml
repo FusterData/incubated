@@ -1,0 +1,22 @@
+notesHeader: |
+  A `DigitalPerformanceAsset` is the advertising account of a `Brand` on a
+  paid-media platform (Google Ads, Meta Ads, LinkedIn Ads...). It carries no
+  metrics: it is the stable anchor that the campaign-level observations
+  (`DigitalPerformanceAssetMetric`) point to. There is one entity per Brand
+  and platform.
+
+notesMiddle: |
+  Recommended identifier: `urn:ngsi-ld:DigitalPerformanceAsset:<Brand>-<Platform>`,
+  for instance `urn:ngsi-ld:DigitalPerformanceAsset:Acme-GoogleAds`.
+
+notesFooter: |
+  `DigitalPerformanceAsset` mirrors the structure of `DigitalAsset` (same
+  subject) and reuses `Brand`, `DataProvider` and `SoftwareApplication`
+  without changes. It is a separate entity type so that campaign-level,
+  cumulative performance data and asset-level period metrics are kept in
+  separate collections by time-series back ends that persist one table per
+  entity type (e.g. QuantumLeap on CrateDB).
+
+notesReadme: |
+  Advertising account of a Brand on a paid-media platform. Anchor entity of
+  the campaign-level observations of the ESFERION use case.

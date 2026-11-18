@@ -13,6 +13,13 @@ contributors:
   project: Ariadne Data Space (PIED)
   comments: Author of the initial versions of the model (SocialMediaMetric, April 2025, github.com/mcristovao17/social-media-smart-data-model; DigitalActivityMetrics, November 2025, github.com/mcristovao17/SMDigitalActivityMetrics), from which this subject evolved.
   year: 2025
+- name: Jon
+  surname: Heras
+  mail: jon@lin3s.com
+  organization: LIN3S B2B
+  project: ESFERION
+  comments: Co-author of the DigitalPerformanceAsset and DigitalPerformanceAssetMetric data models (ESFERION use case).
+  year: 2026
 - name: Miguel Ángel
   surname: López Fuster
   mail: fuster@lin3s.com
@@ -26,4 +33,11 @@ contributors:
   organization: LIN3S
   project: Ariadne Data Space (PIED)
   comments: Co-author of the Smart Data Model for Digital Marketing within the Ariadne Data Space initiative.
+  year: 2026
+- name: Juan Andrés
+  surname: Tejero
+  mail: jatejero@lin3s.com
+  organization: LIN3S B2B
+  project: ESFERION
+  comments: Lead author and maintainer of the DigitalPerformanceAsset and DigitalPerformanceAssetMetric data models (ESFERION use case).
   year: 2026

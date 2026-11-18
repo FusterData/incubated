@@ -27,6 +27,8 @@ entities:
   - DataProvider
   - DigitalAsset
   - DigitalAssetMetric
+  - DigitalPerformanceAsset
+  - DigitalPerformanceAssetMetric
 
 reused_entities:
   - subject: dataModel.Organization
@@ -89,3 +91,17 @@ resources:
   # worked examples) and <Entity>/doc/spec.md (per-entity rationale).
   spec_full: README.md
   data_space: https://ariadnedata.eu
+
+additional_use_cases:
+  - name: ESFERION
+    description: |
+      Investment optimisation of paid-media campaigns. Companies publish the
+      daily cumulative performance of each of their Google Ads, Meta Ads and
+      LinkedIn Ads campaigns as DigitalPerformanceAssetMetric entities, attached
+      to one DigitalPerformanceAsset per advertising account. The service trains
+      forecasting models on the resulting time series and recommends how to
+      distribute the advertising budget. Deployed on the Ariadne Data Space.
+    entities:
+      - DigitalPerformanceAsset
+      - DigitalPerformanceAssetMetric
+    promoter: LIN3S B2B
