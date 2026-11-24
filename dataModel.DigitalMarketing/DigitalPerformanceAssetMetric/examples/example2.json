@@ -1,0 +1,15 @@
+{
+  "id": "urn:ngsi-ld:DigitalPerformanceAssetMetric:Acme:LinkedInAds:311905472:P1D",
+  "type": "DigitalPerformanceAssetMetric",
+  "dateObserved": "2026-09-14T00:00:00Z",
+  "temporalResolution": "P1D",
+  "refDigitalPerformanceAsset": "urn:ngsi-ld:DigitalPerformanceAsset:Acme-LinkedInAds",
+  "refDataProvider": "urn:ngsi-ld:DataProvider:Acme-Internal-Pipeline",
+  "campaignId": "311905472",
+  "campaignType": "LEAD_GENERATION",
+  "adsSpend": 920.0,
+  "adsImpressions": 15384,
+  "adsClicks": 212,
+  "adsConversions": 9,
+  "adsConversionsValue": 0.0
+}

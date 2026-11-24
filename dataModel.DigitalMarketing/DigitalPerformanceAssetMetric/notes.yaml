@@ -1,0 +1,39 @@
+notesHeader: |
+  A `DigitalPerformanceAssetMetric` is the observation of one paid-media
+  campaign at a given date. There is one entity per campaign and one
+  observation per day.
+
+  **Values are cumulative.** Each observation carries the totals of the
+  campaign up to `dateObserved`, not the increment of the day. The daily
+  increment is the difference between two consecutive observations, and the
+  current state of a campaign is its latest observation. Adding up the
+  observations of a period counts the same spend several times.
+
+notesMiddle: |
+  Recommended identifier:
+  `urn:ngsi-ld:DigitalPerformanceAssetMetric:<Brand>:<Platform>:<campaignId>:<temporalResolution>`.
+  The identifier does not include the date: the context broker keeps the
+  latest observation of each campaign, and the history is kept by a
+  time-series store (e.g. QuantumLeap) indexed by `dateObserved`. For that
+  reason observations of the same campaign must be published in ascending
+  date order.
+
+  The five `ads*` properties are named and typed like their counterparts in
+  `DigitalAssetMetric`, so that consumers can use the same code for both.
+
+notesFooter: |
+  Platform-native columns. In addition to the properties defined in this
+  schema, publishers may attach the native columns of the advertising
+  platform (e.g. `bidding_strategy` for Google Ads or `optimization_goal`
+  for Meta Ads) as additional properties with their original names. Those
+  columns are platform specific, are not comparable across platforms and are
+  not part of this data model.
+
+  Sparse payloads. A property whose value is unknown is omitted (NGSI-LD does
+  not allow null values). `accountRef` is omitted for platforms whose data
+  does not provide an account identifier.
+
+notesReadme: |
+  Campaign-level, cumulative observation of a paid-media campaign (spend,
+  impressions, clicks, conversions and conversion value), comparable across
+  Google Ads, Meta Ads and LinkedIn Ads.

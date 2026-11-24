@@ -1,0 +1,20 @@
+{
+  "id": "urn:ngsi-ld:DigitalPerformanceAssetMetric:Acme:GoogleAds:20481516234:P1D",
+  "type": "DigitalPerformanceAssetMetric",
+  "dateObserved": "2026-09-14T00:00:00Z",
+  "temporalResolution": "P1D",
+  "refDigitalPerformanceAsset": "urn:ngsi-ld:DigitalPerformanceAsset:Acme-GoogleAds",
+  "refDataProvider": "urn:ngsi-ld:DataProvider:Acme-Internal-Pipeline",
+  "campaignId": "20481516234",
+  "campaignType": "SEARCH",
+  "accountRef": "1234567890",
+  "adsSpend": 1842.37,
+  "adsImpressions": 48210,
+  "adsClicks": 2377,
+  "adsConversions": 58,
+  "adsConversionsValue": 6310.5,
+  "@context": [
+    "https://smart-data-models.github.io/dataModel.DigitalMarketing/context.jsonld",
+    "https://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context-v1.7.jsonld"
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schemaVersion": "0.0.1",
+  "$id": "https://smart-data-models.github.io/dataModel.DigitalMarketing/DigitalPerformanceAsset/schema.json",
+  "title": "Smart Data Models - DigitalPerformanceAsset schema",
+  "description": "An advertising account of a Brand on a paid-media platform (e.g. Google Ads, Meta Ads, LinkedIn Ads). It is the stable entity to which campaign-level performance observations (DigitalPerformanceAssetMetric) are attached. There is one DigitalPerformanceAsset per Brand and platform.",
+  "modelTags": "DigitalMarketing,PaidMedia,ESFERION",
+  "derivedFrom": "https://smart-data-models.github.io/dataModel.DigitalMarketing/DigitalAsset/schema.json",
+  "license": "https://github.com/smart-data-models/dataModel.DigitalMarketing/blob/master/LICENSE.md",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"
+    },
+    {
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "DigitalPerformanceAsset"
+          ],
+          "description": "Property. NGSI Entity type. It has to be DigitalPerformanceAsset"
+        },
+        "digitalAssetKind": {
+          "type": "string",
+          "enum": [
+            "Web",
+            "MobileApp",
+            "SocialProfile",
+            "SearchEngine",
+            "PaidAds",
+            "VideoPlatform",
+            "Email",
+            "Newsletter",
+            "Podcast",
+            "Marketplace",
+            "Other"
+          ],
+          "description": "Property. Model:'https://schema.org/Text'. High-level kind of the asset. Same enumeration as DigitalAsset.digitalAssetKind in this subject. Advertising accounts use PaidAds. Enum:'Web, MobileApp, SocialProfile, SearchEngine, PaidAds, VideoPlatform, Email, Newsletter, Podcast, Marketplace, Other'"
+        },
+        "refBrand": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256,
+              "pattern": "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$",
+              "description": "Property. Identifier format of any NGSI entity"
+            },
+            {
+              "type": "string",
+              "format": "uri",
+              "description": "Property. Identifier format of any NGSI entity"
+            }
+          ],
+          "description": "Relationship. Model:'https://schema.org/URL'. Identifier of the Brand that owns this advertising account"
+        },
+        "refSoftwareApplication": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256,
+              "pattern": "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$",
+              "description": "Property. Identifier format of any NGSI entity"
+            },
+            {
+              "type": "string",
+              "format": "uri",
+              "description": "Property. Identifier format of any NGSI entity"
+            }
+          ],
+          "description": "Relationship. Model:'https://schema.org/URL'. Identifier of the SoftwareApplication (advertising platform) where the account lives, e.g. urn:ngsi-ld:SoftwareApplication:GoogleAds"
+        }
+      }
+    }
+  ],
+  "required": [
+    "id",
+    "type",
+    "name",
+    "refBrand",
+    "refSoftwareApplication"
+  ]
+}

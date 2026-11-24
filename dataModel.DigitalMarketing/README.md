@@ -16,6 +16,8 @@ looks like (`DigitalAssetMetric`).
 | [DigitalAsset](./DigitalAsset/doc/spec.md) | Concrete digital asset (web, app, social profile, paid-ads account…) of a `Brand`, observed through one `SoftwareApplication`. | incubated |
 | [DataProvider](./DataProvider/doc/spec.md) | Technical agent (ETL / connector) that injects observations into the data space. Sovereignty-aware: canonical case is Internal to the data owner. | incubated |
 | [DigitalAssetMetric](./DigitalAssetMetric/doc/spec.md) | Observation of a channel for a given date and temporal granularity (P1D / P1M / P3M / P1Y). 59 traffic, engagement, e-commerce, organic and ads metrics. | incubated |
+| [DigitalPerformanceAsset](./DigitalPerformanceAsset/doc/spec.md) | Advertising account of a `Brand` on a paid-media platform (Google Ads, Meta Ads, LinkedIn Ads). Anchor of the campaign-level observations. | incubated |
+| [DigitalPerformanceAssetMetric](./DigitalPerformanceAssetMetric/doc/spec.md) | Campaign-level observation of a paid-media campaign: cumulative spend, impressions, clicks, conversions and conversion value up to `dateObserved`. | incubated |
 
 ## Reused entities (from other subjects)
 
@@ -103,6 +105,51 @@ provider). The grafo NGSI-LD makes this explicit without duplication.
     "keyEvents": 28
   }
 ]
+```
+
+## Campaign-level performance (ESFERION use case)
+
+`DigitalAssetMetric` observes an asset as a whole and reports the value of a
+period. Investment optimisation needs a finer grain: each **campaign** of an
+advertising account, with the totals accumulated by the campaign so far.
+That is what `DigitalPerformanceAsset` and `DigitalPerformanceAssetMetric`
+add, reusing the rest of the subject (`Brand`, `DataProvider`,
+`SoftwareApplication`, `Organization`) unchanged.
+
+```
+   Brand (Acme) ← refBrand ─ DigitalPerformanceAsset (Acme-GoogleAds) ─ refSoftwareApplication → SoftwareApplication (GoogleAds)
+                                       ↑ refDigitalPerformanceAsset
+                                       │
+                 DigitalPerformanceAssetMetric (one per campaign, one observation per day) ─ refDataProvider → DataProvider
+```
+
+| | `DigitalAssetMetric` | `DigitalPerformanceAssetMetric` |
+| --- | --- | --- |
+| Grain | the asset | each campaign of the advertising account |
+| Value semantics | value of the period (`P1D`, `P1M`, `P3M`, `P1Y`) | cumulative total of the campaign up to `dateObserved` |
+| Typical use | cross-brand benchmarking | campaign investment optimisation and forecasting |
+
+The five `ads*` properties keep the name and type they have in
+`DigitalAssetMetric`. The schemas of these two entities follow JSON Schema
+2020-12.
+
+```json
+{
+  "id": "urn:ngsi-ld:DigitalPerformanceAssetMetric:Acme:GoogleAds:20481516234:P1D",
+  "type": "DigitalPerformanceAssetMetric",
+  "dateObserved": "2026-09-14T00:00:00Z",
+  "temporalResolution": "P1D",
+  "refDigitalPerformanceAsset": "urn:ngsi-ld:DigitalPerformanceAsset:Acme-GoogleAds",
+  "refDataProvider": "urn:ngsi-ld:DataProvider:Acme-Internal-Pipeline",
+  "campaignId": "20481516234",
+  "campaignType": "SEARCH",
+  "accountRef": "1234567890",
+  "adsSpend": 1842.37,
+  "adsImpressions": 48210,
+  "adsClicks": 2377,
+  "adsConversions": 58,
+  "adsConversionsValue": 6310.5
+}
 ```
 
 ## Sovereignty principle
