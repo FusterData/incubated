@@ -1,107 +1,68 @@
-subject: dataModel.DigitalMarketing
-description: |
-  Smart Data Model subject for Digital Marketing analytics in a federated
-  data space context (FIWARE / NGSI-LD).
+notesPrevious: |
+  Data models for digital marketing analytics in a federated data space. They
+  describe who legally owns a digital asset (`Organization`), under which
+  commercial identity it is operated (`Brand`), which concrete asset is
+  measured (`DigitalAsset`), which tool measures it (`SoftwareApplication`),
+  which pipeline supplies the data (`DataProvider`) and what the resulting
+  observation looks like (`DigitalAssetMetric`). Two more entities describe
+  paid-media campaigns: the advertising account (`DigitalPerformanceAsset`)
+  and the observation of each campaign (`DigitalPerformanceAssetMetric`).
 
-  The subject models the entities required to publish comparable digital
-  marketing metrics across brands, channels and platforms, decoupling the
-  commercial identity (Brand), the observable digital asset (DigitalAsset),
-  the measuring tool (SoftwareApplication), the technical pipeline that
-  injects the data (DataProvider) and the legal owner of the data
-  (Organization). The time-series observations are emitted as
-  DigitalAssetMetric entities with explicit temporal resolution
-  (P1D, P1M, P3M, P1Y) and 59 traffic, engagement, e-commerce, organic
-  and paid-ads metrics.
+  Reused entities. `Organization` comes from
+  [dataModel.Organization](https://github.com/smart-data-models/dataModel.Organization)
+  and is the legal entity that owns a `Brand` or a `DataProvider`.
+  `SoftwareApplication` follows [schema.org](https://schema.org/SoftwareApplication)
+  and is the tool that measures an asset (Google Analytics 4, Google Ads,
+  Meta Ads, LinkedIn...).
 
-  The model was developed within the Ariadne Data Space initiative
-  (Spanish PIED), grounded on real ingestion pipelines from GA4, Google
-  Ads, Meta Ads, LinkedIn, X (Twitter), YouTube, Google Search Console
-  and Instagram, and aligned with the European Marco Técnico de
-  Interoperabilidad (UNE 0087:2025) for digital marketing data spaces.
+  ```
+                               Organization (Google LLC)
+                                      ↑ refManufacturer
+                         SoftwareApplication (GA4)
+                                      ↑ refSoftwareApplication
+  Organization (Acme Holdings S.L.) ← refOrganization ─ Brand (Acme) ← refBrand ─ DigitalAsset (Acme-GA4)
+                 ↑ refOrganization                                                    ↑ refDigitalAsset
+         DataProvider (Acme-Internal-Pipeline) ← refDataProvider ─────────── DigitalAssetMetric (dateObserved, P1D, metrics)
 
-  See the README.md of this subject for the entity diagram, examples and
-  the conceptual model.
+  Brand (Acme) ← refBrand ─ DigitalPerformanceAsset (Acme-GoogleAds) ─ refSoftwareApplication → SoftwareApplication (GoogleAds)
+                                      ↑ refDigitalPerformanceAsset
+          DigitalPerformanceAssetMetric (one per campaign, one observation per day) ─ refDataProvider → DataProvider
+  ```
 
-entities:
-  - Brand
-  - DataProvider
-  - DigitalAsset
-  - DigitalAssetMetric
-  - DigitalPerformanceAsset
-  - DigitalPerformanceAssetMetric
+  The models come from two use cases in production on the ARIADNE Data Space
+  (https://ariadnedata.eu), and can be reused in any NGSI-LD data space:
 
-reused_entities:
-  - subject: dataModel.Organization
-    entity: Organization
-    role: Legal owner of a Brand (DataOwner) and of a DataProvider
-      pipeline (ServiceProvider / Agency / SoftwareVendor depending on
-      the `category` attribute).
-  - subject: schema.org
-    entity: SoftwareApplication
-    role: The measuring tool that observes a DigitalAsset (e.g. Google
-      Analytics 4, Meta Business Manager, LinkedIn Marketing API).
-      Points back to its manufacturer via refManufacturer.
+  - **Digital Benchmark** (promoter: I2C Internet SL). Cross-brand
+    benchmarking of digital marketing performance. Brands publish
+    `DigitalAssetMetric` series of their web sites, apps, social profiles and
+    paid-ads accounts, and consumers subscribe to comparative analytics under
+    explicit ODRL agreements.
+  - **ESFERION** (promoter: LIN3S B2B). Investment optimisation of paid-media
+    campaigns. Companies publish the daily cumulative performance of each of
+    their Google Ads, Meta Ads and LinkedIn Ads campaigns as
+    `DigitalPerformanceAssetMetric` entities, attached to one
+    `DigitalPerformanceAsset` per advertising account.
 
-domain: CrossSector
-keywords:
-  - digital marketing
-  - analytics
-  - benchmarking
-  - GA4
-  - paid ads
-  - organic
-  - SEO
-  - social media
-  - data space
-  - NGSI-LD
-license: MIT
-use_case:
-  name: Digital Benchmark
-  description: |
-    Cross-brand benchmarking of digital marketing performance. Brands publish
-    DigitalAssetMetric time series of their digital assets (web, app, social
-    profiles, paid-ads accounts) and consumers subscribe to aggregated,
-    comparative analytics under explicit ODRL agreements. The use case is
-    deployed on top of the Ariadne Data Space (Spanish PIED initiative)
-    but is reusable in any FIWARE / NGSI-LD federated data space.
-promoter:
-  name: I2C Internet SL
-  url: https://lin3s.com
-  role: |
-    Promoter and owner of the Digital Benchmark use case. Drives the schema
-    evolution, the ODRL policies of the benchmarking subscription offerings
-    and the adopter onboarding.
-maintainers:
-  - name: I2C Internet SL
-    url: https://lin3s.com
-    role: Maintainer of the Smart Data Model for the Digital Benchmark use case.
-adopters:
-  # Lista completa con razón social en per-entity ADOPTERS.yaml.
-  # Aquí solo el resumen para discovery.
-  - Torresburriel S.L.
-  - Torresburriel Academy S.L.
-  - SUPERPET PUNTO CLUB, S.L.
-  - GEOTELECOM S.L.U.
-  - LIGHTHOUSE FEED, S.L.U.
-  - Workoholics SL
-  - Seobide Marketing S.L.
+  | | `DigitalAssetMetric` | `DigitalPerformanceAssetMetric` |
+  | --- | --- | --- |
+  | Grain | the asset | each campaign of the advertising account |
+  | Value semantics | value of the period (`P1D`, `P1M`, `P3M`, `P1Y`) | cumulative total of the campaign up to `dateObserved` |
+  | Typical use | cross-brand benchmarking | campaign investment optimisation and forecasting |
 
-resources:
-  # Full specification lives in this subject: README.md (entity graph and
-  # worked examples) and <Entity>/doc/spec.md (per-entity rationale).
-  spec_full: README.md
-  data_space: https://ariadnedata.eu
+notesEnd: |
+  Sovereignty principle. `DataProvider` is decoupled from `Organization` so
+  that data lineage is explicit. In the canonical case the pipeline belongs to
+  the same `Organization` that owns the brand (`providerKind` = `Internal`),
+  even when its operation is delegated to a third party (`refOperator`). A
+  third party that publishes its own processing of the same sources does so
+  under its own `DataProvider` (`providerKind` = `External`), and consumers
+  compare both feeds by filtering on `refDataProvider`.
 
-additional_use_cases:
-  - name: ESFERION
-    description: |
-      Investment optimisation of paid-media campaigns. Companies publish the
-      daily cumulative performance of each of their Google Ads, Meta Ads and
-      LinkedIn Ads campaigns as DigitalPerformanceAssetMetric entities, attached
-      to one DigitalPerformanceAsset per advertising account. The service trains
-      forecasting models on the resulting time series and recommends how to
-      distribute the advertising budget. Deployed on the Ariadne Data Space.
-    entities:
-      - DigitalPerformanceAsset
-      - DigitalPerformanceAssetMetric
-    promoter: LIN3S B2B
+  Non-additivity by design. `temporalResolution` keeps daily, monthly,
+  quarterly and yearly observations in separate entities, because unique-user
+  counts and similar metrics cannot be added up across periods.
+
+  Standards used: NGSI-LD (ETSI GS CIM 009), JSON Schema 2020-12, ISO 8601
+  durations for `temporalResolution`, ISO 4217 for monetary `unitCode`
+  (`EUR` by default), UN/CEFACT common codes for the other units (`C26` =
+  minute) and NACE Rev. 2.1 for `Brand.businessSection`.

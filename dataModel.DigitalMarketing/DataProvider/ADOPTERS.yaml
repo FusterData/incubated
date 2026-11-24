@@ -1,32 +1,43 @@
-# ADOPTERS — entidades que participan en el caso de uso "Digital Benchmark"
-# (cross-brand benchmarking of digital marketing performance). El caso de uso
-# vive sobre el espacio de datos Ariadne (Spanish PIED) pero el modelo es
-# reusable en cualquier data space federado FIWARE/NGSI-LD.
-
-- name: I2C Internet SL
-  url: https://lin3s.com
-  description: |
-    Promoter, owner and maintainer of the Digital Benchmark use case.
-    Operates the benchmarking subscription offerings against the
-    DigitalAssetMetric series published by the adopters below.
-
-- name: Torresburriel S.L.
-  description: Adopter — publishes DigitalAssetMetric observations for the Digital Benchmark use case.
-
-- name: Torresburriel Academy S.L.
-  description: Adopter — publishes DigitalAssetMetric observations for the Digital Benchmark use case.
-
-- name: SUPERPET PUNTO CLUB, S.L.
-  description: Adopter — publishes DigitalAssetMetric observations for the Digital Benchmark use case.
-
-- name: GEOTELECOM S.L.U.
-  description: Adopter — publishes DigitalAssetMetric observations for the Digital Benchmark use case.
-
-- name: LIGHTHOUSE FEED, S.L.U.
-  description: Adopter — publishes DigitalAssetMetric observations for the Digital Benchmark use case.
-
-- name: Workoholics SL
-  description: Adopter — publishes DigitalAssetMetric observations for the Digital Benchmark use case.
-
-- name: Seobide Marketing S.L.
-  description: Adopter — publishes DigitalAssetMetric observations for the Digital Benchmark use case.
+description: This is a compilation list of the current adopters of the data model DataProvider of the Subject dataModel.DigitalMarketing. All fields are non mandatory. More info at https://smart-data-models.github.io/data-models/templates/dataModel/ADOPTERS.yaml
+currentAdopters:
+-
+ adopter: Digital Benchmark use case
+ description: Cross-brand benchmarking of digital marketing performance. Promoter, owner and maintainer of the use case, which operates the benchmarking subscription offerings on top of the DigitalAssetMetric series published by the adopters below.
+ organization: I2C Internet SL
+ project: Digital Benchmark, deployed on the ARIADNE Data Space (https://ariadnedata.eu)
+ comments: In production.
+-
+ adopter: "Torresburriel S.L."
+ description: Adopter. It declares the DataProvider (pipeline) that supplies its observations for the Digital Benchmark use case.
+ organization: "Torresburriel S.L."
+ project: Digital Benchmark, deployed on the ARIADNE Data Space (https://ariadnedata.eu)
+-
+ adopter: "Torresburriel Academy S.L."
+ description: Adopter. It declares the DataProvider (pipeline) that supplies its observations for the Digital Benchmark use case.
+ organization: "Torresburriel Academy S.L."
+ project: Digital Benchmark, deployed on the ARIADNE Data Space (https://ariadnedata.eu)
+-
+ adopter: "SUPERPET PUNTO CLUB, S.L."
+ description: Adopter. It declares the DataProvider (pipeline) that supplies its observations for the Digital Benchmark use case.
+ organization: "SUPERPET PUNTO CLUB, S.L."
+ project: Digital Benchmark, deployed on the ARIADNE Data Space (https://ariadnedata.eu)
+-
+ adopter: "GEOTELECOM S.L.U."
+ description: Adopter. It declares the DataProvider (pipeline) that supplies its observations for the Digital Benchmark use case.
+ organization: "GEOTELECOM S.L.U."
+ project: Digital Benchmark, deployed on the ARIADNE Data Space (https://ariadnedata.eu)
+-
+ adopter: "LIGHTHOUSE FEED, S.L.U."
+ description: Adopter. It declares the DataProvider (pipeline) that supplies its observations for the Digital Benchmark use case.
+ organization: "LIGHTHOUSE FEED, S.L.U."
+ project: Digital Benchmark, deployed on the ARIADNE Data Space (https://ariadnedata.eu)
+-
+ adopter: "Workoholics SL"
+ description: Adopter. It declares the DataProvider (pipeline) that supplies its observations for the Digital Benchmark use case.
+ organization: "Workoholics SL"
+ project: Digital Benchmark, deployed on the ARIADNE Data Space (https://ariadnedata.eu)
+-
+ adopter: "Seobide Marketing S.L."
+ description: Adopter. It declares the DataProvider (pipeline) that supplies its observations for the Digital Benchmark use case.
+ organization: "Seobide Marketing S.L."
+ project: Digital Benchmark, deployed on the ARIADNE Data Space (https://ariadnedata.eu)

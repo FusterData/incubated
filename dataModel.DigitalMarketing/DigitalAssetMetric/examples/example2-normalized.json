@@ -2,35 +2,129 @@
   "id": "urn:ngsi-ld:DigitalAssetMetric:Acme:LinkedIn:P1D",
   "type": "DigitalAssetMetric",
   "dateObserved": {
-    "type": "Property",
-    "value": { "@type": "DateTime", "@value": "2026-02-07T00:00:00Z" }
+    "type": "DateTime",
+    "value": "2026-02-07T00:00:00Z"
   },
-  "temporalResolution": { "type": "Property", "value": "P1D" },
-  "refDigitalAsset": { "type": "Relationship", "object": "urn:ngsi-ld:DigitalAsset:Acme-LinkedIn" },
-  "refDataProvider":   { "type": "Relationship", "object": "urn:ngsi-ld:DataProvider:Acme-Internal-Pipeline" },
-
-  "organicFollowers":       { "type": "Property", "value": 4820 },
-  "organicFollowersGained": { "type": "Property", "value": 18 },
-  "organicFollowersLost":   { "type": "Property", "value": 3 },
-  "organicImpressions":     { "type": "Property", "value": 12450 },
-  "organicClicks":          { "type": "Property", "value": 187 },
-  "organicLikes":           { "type": "Property", "value": 92 },
-  "organicComments":        { "type": "Property", "value": 14 },
-  "organicShares":          { "type": "Property", "value": 8 },
-  "organicReactions":       { "type": "Property", "value": 121 },
-  "organicInteractions":    { "type": "Property", "value": 143 },
-  "organicReach":           { "type": "Property", "value": 9740 },
-  "organicEngagementTime":  { "type": "Property", "value": 612, "unitCode": "C26" },
-
-  "adsSpend":        { "type": "Property", "value": 350.45, "unitCode": "EUR" },
-  "adsClicks":       { "type": "Property", "value": 245 },
-  "adsImpressions":  { "type": "Property", "value": 38200 },
-  "adsReach":        { "type": "Property", "value": 21300 },
-  "adsLikes":        { "type": "Property", "value": 56 },
-  "adsComments":     { "type": "Property", "value": 7 },
-  "adsShares":       { "type": "Property", "value": 4 },
-  "adsInteractions": { "type": "Property", "value": 67 },
-  "adsConversions":  { "type": "Property", "value": 12 },
-  "adsRevenue":      { "type": "Property", "value": 1820.0, "unitCode": "EUR" },
-  "adsFollows":      { "type": "Property", "value": 9 }
+  "temporalResolution": {
+    "type": "Text",
+    "value": "P1D"
+  },
+  "refDigitalAsset": {
+    "type": "Text",
+    "value": "urn:ngsi-ld:DigitalAsset:Acme-LinkedIn"
+  },
+  "refDataProvider": {
+    "type": "Text",
+    "value": "urn:ngsi-ld:DataProvider:Acme-Internal-Pipeline"
+  },
+  "organicFollowers": {
+    "type": "Number",
+    "value": 4820
+  },
+  "organicFollowersGained": {
+    "type": "Number",
+    "value": 18
+  },
+  "organicFollowersLost": {
+    "type": "Number",
+    "value": 3
+  },
+  "organicImpressions": {
+    "type": "Number",
+    "value": 12450
+  },
+  "organicClicks": {
+    "type": "Number",
+    "value": 187
+  },
+  "organicLikes": {
+    "type": "Number",
+    "value": 92
+  },
+  "organicComments": {
+    "type": "Number",
+    "value": 14
+  },
+  "organicShares": {
+    "type": "Number",
+    "value": 8
+  },
+  "organicReactions": {
+    "type": "Number",
+    "value": 121
+  },
+  "organicInteractions": {
+    "type": "Number",
+    "value": 143
+  },
+  "organicReach": {
+    "type": "Number",
+    "value": 9740
+  },
+  "organicEngagementTime": {
+    "type": "Number",
+    "value": 612,
+    "metadata": {
+      "unitCode": {
+        "type": "Text",
+        "value": "C26"
+      }
+    }
+  },
+  "adsSpend": {
+    "type": "Number",
+    "value": 350.45,
+    "metadata": {
+      "unitCode": {
+        "type": "Text",
+        "value": "EUR"
+      }
+    }
+  },
+  "adsClicks": {
+    "type": "Number",
+    "value": 245
+  },
+  "adsImpressions": {
+    "type": "Number",
+    "value": 38200
+  },
+  "adsReach": {
+    "type": "Number",
+    "value": 21300
+  },
+  "adsLikes": {
+    "type": "Number",
+    "value": 56
+  },
+  "adsComments": {
+    "type": "Number",
+    "value": 7
+  },
+  "adsShares": {
+    "type": "Number",
+    "value": 4
+  },
+  "adsInteractions": {
+    "type": "Number",
+    "value": 67
+  },
+  "adsConversions": {
+    "type": "Number",
+    "value": 12
+  },
+  "adsRevenue": {
+    "type": "Number",
+    "value": 1820.0,
+    "metadata": {
+      "unitCode": {
+        "type": "Text",
+        "value": "EUR"
+      }
+    }
+  },
+  "adsFollows": {
+    "type": "Number",
+    "value": 9
+  }
 }

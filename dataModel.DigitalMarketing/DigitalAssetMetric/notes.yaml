@@ -1,16 +1,55 @@
-name: DigitalAssetMetric
-description: >
-  A digital marketing observation of a DigitalAsset for a specific date and
-  temporal granularity (P1D / P1M / P3M / P1Y). Includes traffic, engagement,
-  e-commerce, organic-social and paid-ads metrics. Metrics that admit
-  breakdown by acquisition channel group are arrays of {channelGroup, value};
-  the rest are scalars. The schema is sparse: non-applicable metrics are
-  simply omitted.
-version: 0.0.1
-status: incubated
-contributors:
-  - LIN3S
-references:
-  - https://en.wikipedia.org/wiki/ISO_8601#Durations
-  - https://unece.org/trade/uncefact/cl-recommendations
-  - https://en.wikipedia.org/wiki/ISO_4217
+notesHeader: |
+  A `DigitalAssetMetric` is the observation of a `DigitalAsset` for a date and
+  a temporal granularity. It carries traffic, engagement, e-commerce, organic
+  and paid-ads metrics (60 metric properties).
+
+  The schema is sparse: a metric that does not apply to an asset is omitted.
+  An asset without paid campaigns has no `ads*` properties, and one without
+  e-commerce has no purchase metrics. Consumers treat an absent property as
+  "not applicable", not as zero. Only `dateObserved`, `temporalResolution`,
+  `refDigitalAsset` and `refDataProvider` are required.
+
+notesMiddle: |
+  Recommended identifier:
+  `urn:ngsi-ld:DigitalAssetMetric:<Brand>:<Software>:<temporalResolution>`,
+  for instance `urn:ngsi-ld:DigitalAssetMetric:Acme:GA4:P1D`. The identifier
+  does not include the date: the context broker keeps the latest observation
+  of each asset and granularity, and the history is kept by a time-series
+  store (e.g. QuantumLeap) indexed by `dateObserved`.
+
+  Temporal granularity. `temporalResolution` is an ISO 8601 duration: `P1D`
+  (daily), `P1M` (monthly), `P3M` (quarterly) or `P1Y` (yearly). Each
+  granularity is published as an independent entity, because unique-user
+  metrics are not additive: daily unique users cannot be added up to obtain
+  the monthly figure, so the source platform reports each granularity
+  separately.
+
+  Segmented metrics. Five metrics are broken down by acquisition channel
+  group and are arrays of `{channelGroup, value}`: `sessions`,
+  `keyEventsPurchase`, `keyEventsGenerateLead`, `purchaseRevenue` and
+  `totalRevenue`. The rest are scalars.
+
+  Units. In the normalized representation, monetary and time metrics carry
+  the `unitCode` metadata:
+
+  - Monetary (`purchaseRevenue`, `totalRevenue`, `adsSpend`, `adsRevenue`,
+    `adsConversionsValue`, `itemRefundAmount`): ISO 4217 currency code,
+    `EUR` by default.
+  - Time (`userEngagementDuration`, `organicEngagementTime`,
+    `organicVideoViewTime`): UN/CEFACT common code `C26` (minute).
+  - Counts and `organicAveragePosition`: no unit.
+
+notesFooter: |
+  The same asset, day and granularity can have observations from different
+  `DataProvider` entities (for instance, the pipeline of the data owner and
+  the processing of a third party). Each one keeps its own identifier, with
+  the provider as a suffix, and `refDataProvider` tells them apart.
+
+  `DigitalPerformanceAssetMetric` (same subject) is the campaign-level
+  counterpart for paid media, with cumulative values. Its five `ads*`
+  properties keep the name and type they have here.
+
+notesReadme: |
+  Observation of a DigitalAsset for a date and a temporal granularity (P1D,
+  P1M, P3M, P1Y), with traffic, engagement, e-commerce, organic and paid-ads
+  metrics.

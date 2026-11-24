@@ -2,31 +2,31 @@
   "id": "urn:ngsi-ld:DataProvider:Acme-Internal-Pipeline",
   "type": "DataProvider",
   "name": {
-    "type": "Property",
+    "type": "Text",
     "value": "Acme Internal Marketing Pipeline"
   },
   "alternateName": {
-    "type": "Property",
+    "type": "Text",
     "value": "Acme ETL"
   },
   "description": {
-    "type": "Property",
+    "type": "Text",
     "value": "Internal data ingestion pipeline of Acme that pulls daily metrics from the brand's own digital channels (GA4, LinkedIn, ...) and emits them as DigitalAssetMetric observations into the data space. Today operated by LIN3S under a delegated-operation contract; the data remains Acme's."
   },
   "providerKind": {
-    "type": "Property",
+    "type": "Text",
     "value": "Internal"
   },
   "version": {
-    "type": "Property",
+    "type": "Text",
     "value": "1.4.0"
   },
   "refOrganization": {
-    "type": "Relationship",
-    "object": "urn:ngsi-ld:Organization:ES-B12345678"
+    "type": "Text",
+    "value": "urn:ngsi-ld:Organization:ES-B12345678"
   },
   "refOperator": {
-    "type": "Relationship",
-    "object": "urn:ngsi-ld:Organization:LIN3S"
+    "type": "Text",
+    "value": "urn:ngsi-ld:Organization:LIN3S"
   }
 }

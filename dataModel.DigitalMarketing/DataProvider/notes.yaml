@@ -1,11 +1,45 @@
-name: DataProvider
-description: >
-  A technical agent (ETL, connector, ingestion service) that injects
-  DigitalAssetMetric observations into the data space. Decoupled from
-  Organization so that the same metric for the same channel on the same day
-  can be supplied by multiple providers (e.g. an internal pipeline and a
-  third-party agency) and remain distinguishable in the historic.
-version: 0.0.1
-status: incubated
-contributors:
-  - LIN3S
+notesHeader: |
+  A `DataProvider` is the technical agent (ETL, connector, ingestion service)
+  that injects `DigitalAssetMetric` observations into the data space. It is
+  decoupled from `Organization` so that the same metric of the same
+  `DigitalAsset` on the same day can be supplied by several providers and
+  remain distinguishable in the historical time series.
+
+  It is not the same concept as the Gaia-X `DataProvider` (a legal
+  participant). The legal participant is modelled here with `Organization`.
+
+notesMiddle: |
+  Recommended identifier: `urn:ngsi-ld:DataProvider:<short-name>`.
+
+  A `DataProvider` answers three questions about a stream of observations:
+
+  - **What** produced the data: `id`, `name`, `version`, `providerKind`.
+  - **Who** legally owns the data: `refOrganization` (exactly one
+    `Organization`).
+  - **Who operates** the pipeline: `refOperator` (optional, at most one
+    `Organization`). When it is absent, the operator is the owner.
+
+  Sovereignty principle. In a data space the data belongs to the
+  `Organization` that owns the `Brand`. The canonical `DataProvider` is
+  therefore an agent of that same organization (`providerKind` = `Internal`),
+  even when its day-to-day operation is delegated to a third party, which is
+  then declared in `refOperator`. A third party becomes a `DataProvider` of
+  its own (`providerKind` = `External`) only when it publishes its own
+  processing of the same sources under its own name. Consumers can then
+  compare both feeds by filtering on `refDataProvider`.
+
+notesFooter: |
+  Two pipelines of the same operator with a different `version` are two
+  distinct `DataProvider` entities, which is useful to compare the output of a
+  pipeline before and after a change.
+
+  A `DataProvider` does not reference `Brand`, `DigitalAsset` or
+  `SoftwareApplication`. The link goes the other way: each
+  `DigitalAssetMetric` carries `refDataProvider`.
+
+  `providerKind` = `Self` is reserved for the case where the source platform
+  itself pushes the data into the data space.
+
+notesReadme: |
+  Technical pipeline that supplies the observations, with the legal owner of
+  the data and, optionally, the organization that operates the pipeline.

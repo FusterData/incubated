@@ -1,13 +1,24 @@
-name: Brand
-description: >
-  A brand operated by a legal organization. Represents a commercial identity
-  (name, sector) decoupled from the legal entity (Organization) so that a
-  single Organization can operate several Brands and one Brand can group
-  several DigitalAssets (web, app, social profiles).
-version: 0.0.1
-status: incubated
-contributors:
-  - LIN3S
-references:
-  - https://schema.org/Brand
-  - https://ec.europa.eu/eurostat/web/nace
+notesHeader: |
+  A `Brand` is a commercial identity (name and sector) operated by a legal
+  organization. It is decoupled from the legal entity (`Organization`) so that
+  one `Organization` can operate several brands and one brand can group
+  several `DigitalAsset` entities (web, app, social profiles...).
+
+notesMiddle: |
+  Recommended identifier: `urn:ngsi-ld:Brand:<short-name>`, or
+  `urn:ngsi-ld:Brand:<vatID>:<short-name>` when the brand name is not globally
+  unique.
+
+  `refOrganization` points to exactly one `Organization` (the legal owner).
+  One `Organization` can be referenced by several `Brand` entities.
+
+notesFooter: |
+  The NACE Rev. 2.1 code (`businessSection`) lives on the `Brand` and not on
+  the `Organization`, because two brands of the same legal entity can belong
+  to different sectors (for instance, a veterinary clinic that also runs a pet
+  store). Codes are written in canonical form: section letter (`A`-`U`),
+  division (`XX`), group (`XX.Y`) or class (`XX.YY`).
+
+notesReadme: |
+  Commercial identity of an Organization, with its NACE sector. It groups the
+  digital assets whose metrics are published in the data space.

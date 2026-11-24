@@ -2,75 +2,217 @@
   "id": "urn:ngsi-ld:DigitalAssetMetric:Acme:GA4:P1M",
   "type": "DigitalAssetMetric",
   "dateObserved": {
-    "type": "Property",
-    "value": { "@type": "DateTime", "@value": "2026-02-01T00:00:00Z" }
+    "type": "DateTime",
+    "value": "2026-02-01T00:00:00Z"
   },
-  "temporalResolution": { "type": "Property", "value": "P1M" },
-  "refDigitalAsset": { "type": "Relationship", "object": "urn:ngsi-ld:DigitalAsset:Acme-GA4" },
-  "refDataProvider":   { "type": "Relationship", "object": "urn:ngsi-ld:DataProvider:Acme-Internal-Pipeline" },
-
+  "temporalResolution": {
+    "type": "Text",
+    "value": "P1M"
+  },
+  "refDigitalAsset": {
+    "type": "Text",
+    "value": "urn:ngsi-ld:DigitalAsset:Acme-GA4"
+  },
+  "refDataProvider": {
+    "type": "Text",
+    "value": "urn:ngsi-ld:DataProvider:Acme-Internal-Pipeline"
+  },
   "sessions": {
-    "type": "Property",
+    "type": "StructuredValue",
     "value": [
-      { "channelGroup": "Direct",         "value": 760 },
-      { "channelGroup": "Cross-network",  "value": 542 },
-      { "channelGroup": "Paid Search",    "value": 980 },
-      { "channelGroup": "Organic Search", "value": 165 },
-      { "channelGroup": "Organic Social", "value": 142 },
-      { "channelGroup": "Paid Social",    "value": 870 },
-      { "channelGroup": "Referral",       "value": 198 },
-      { "channelGroup": "Email",          "value": 62  },
-      { "channelGroup": "Unassigned",     "value": 81  }
+      {
+        "channelGroup": "Direct",
+        "value": 760
+      },
+      {
+        "channelGroup": "Cross-network",
+        "value": 542
+      },
+      {
+        "channelGroup": "Paid Search",
+        "value": 980
+      },
+      {
+        "channelGroup": "Organic Search",
+        "value": 165
+      },
+      {
+        "channelGroup": "Organic Social",
+        "value": 142
+      },
+      {
+        "channelGroup": "Paid Social",
+        "value": 870
+      },
+      {
+        "channelGroup": "Referral",
+        "value": 198
+      },
+      {
+        "channelGroup": "Email",
+        "value": 62
+      },
+      {
+        "channelGroup": "Unassigned",
+        "value": 81
+      }
     ]
   },
   "purchaseRevenue": {
-    "type": "Property",
+    "type": "StructuredValue",
     "value": [
-      { "channelGroup": "Direct",         "value": 612.0 },
-      { "channelGroup": "Email",          "value": 124.5 },
-      { "channelGroup": "Organic Search", "value": 245.0 },
-      { "channelGroup": "Paid Search",    "value": 410.7 },
-      { "channelGroup": "Referral",       "value": 220.0 }
+      {
+        "channelGroup": "Direct",
+        "value": 612.0
+      },
+      {
+        "channelGroup": "Email",
+        "value": 124.5
+      },
+      {
+        "channelGroup": "Organic Search",
+        "value": 245.0
+      },
+      {
+        "channelGroup": "Paid Search",
+        "value": 410.7
+      },
+      {
+        "channelGroup": "Referral",
+        "value": 220.0
+      }
     ],
-    "unitCode": "EUR"
+    "metadata": {
+      "unitCode": {
+        "type": "Text",
+        "value": "EUR"
+      }
+    }
   },
   "totalRevenue": {
-    "type": "Property",
+    "type": "StructuredValue",
     "value": [
-      { "channelGroup": "Direct",         "value": 612.0 },
-      { "channelGroup": "Email",          "value": 124.5 },
-      { "channelGroup": "Organic Search", "value": 245.0 },
-      { "channelGroup": "Paid Search",    "value": 410.7 },
-      { "channelGroup": "Referral",       "value": 220.0 }
+      {
+        "channelGroup": "Direct",
+        "value": 612.0
+      },
+      {
+        "channelGroup": "Email",
+        "value": 124.5
+      },
+      {
+        "channelGroup": "Organic Search",
+        "value": 245.0
+      },
+      {
+        "channelGroup": "Paid Search",
+        "value": 410.7
+      },
+      {
+        "channelGroup": "Referral",
+        "value": 220.0
+      }
     ],
-    "unitCode": "EUR"
+    "metadata": {
+      "unitCode": {
+        "type": "Text",
+        "value": "EUR"
+      }
+    }
   },
   "keyEventsPurchase": {
-    "type": "Property",
+    "type": "StructuredValue",
     "value": [
-      { "channelGroup": "Direct",      "value": 12 },
-      { "channelGroup": "Paid Search", "value": 8  }
+      {
+        "channelGroup": "Direct",
+        "value": 12
+      },
+      {
+        "channelGroup": "Paid Search",
+        "value": 8
+      }
     ]
   },
-
-  "newUsers":              { "type": "Property", "value": 2480 },
-  "totalUsers":            { "type": "Property", "value": 3120 },
-  "activeUsers":           { "type": "Property", "value": 2865 },
-  "engagedSessions":       { "type": "Property", "value": 2210 },
-  "userEngagementDuration":{ "type": "Property", "value": 178500, "unitCode": "C26" },
-  "pageViews":             { "type": "Property", "value": 8920 },
-  "keyEvents":             { "type": "Property", "value": 802 },
-  "totalPurchasers":       { "type": "Property", "value": 78 },
-  "firstTimePurchasers":   { "type": "Property", "value": 54 },
-  "itemsPurchased":        { "type": "Property", "value": 142 },
-  "itemViewEvents":        { "type": "Property", "value": 2110 },
-  "addToCarts":            { "type": "Property", "value": 412 },
-  "checkouts":             { "type": "Property", "value": 168 },
-  "ecommercePurchases":    { "type": "Property", "value": 78 },
-  "transactions":          { "type": "Property", "value": 78 },
-
-  "organicAveragePosition":{ "type": "Property", "value": 18.4 },
-  "organicClicks":         { "type": "Property", "value": 65 },
-  "organicImpressions":    { "type": "Property", "value": 4820 },
-  "organicKeywordCount":   { "type": "Property", "value": 412 }
+  "newUsers": {
+    "type": "Number",
+    "value": 2480
+  },
+  "totalUsers": {
+    "type": "Number",
+    "value": 3120
+  },
+  "activeUsers": {
+    "type": "Number",
+    "value": 2865
+  },
+  "engagedSessions": {
+    "type": "Number",
+    "value": 2210
+  },
+  "userEngagementDuration": {
+    "type": "Number",
+    "value": 178500,
+    "metadata": {
+      "unitCode": {
+        "type": "Text",
+        "value": "C26"
+      }
+    }
+  },
+  "pageViews": {
+    "type": "Number",
+    "value": 8920
+  },
+  "keyEvents": {
+    "type": "Number",
+    "value": 802
+  },
+  "totalPurchasers": {
+    "type": "Number",
+    "value": 78
+  },
+  "firstTimePurchasers": {
+    "type": "Number",
+    "value": 54
+  },
+  "itemsPurchased": {
+    "type": "Number",
+    "value": 142
+  },
+  "itemViewEvents": {
+    "type": "Number",
+    "value": 2110
+  },
+  "addToCarts": {
+    "type": "Number",
+    "value": 412
+  },
+  "checkouts": {
+    "type": "Number",
+    "value": 168
+  },
+  "ecommercePurchases": {
+    "type": "Number",
+    "value": 78
+  },
+  "transactions": {
+    "type": "Number",
+    "value": 78
+  },
+  "organicAveragePosition": {
+    "type": "Number",
+    "value": 18.4
+  },
+  "organicClicks": {
+    "type": "Number",
+    "value": 65
+  },
+  "organicImpressions": {
+    "type": "Number",
+    "value": 4820
+  },
+  "organicKeywordCount": {
+    "type": "Number",
+    "value": 412
+  }
 }

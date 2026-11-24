@@ -2,35 +2,35 @@
   "id": "urn:ngsi-ld:DigitalAsset:Acme-GA4",
   "type": "DigitalAsset",
   "name": {
-    "type": "Property",
+    "type": "Text",
     "value": "Acme Web (GA4)"
   },
   "alternateName": {
-    "type": "Property",
+    "type": "Text",
     "value": "AcmeOne GA4"
   },
   "description": {
-    "type": "Property",
+    "type": "Text",
     "value": "GA4 property tracking the acme.example corporate website."
   },
   "digitalAssetUrl": {
-    "type": "Property",
+    "type": "Text",
     "value": "https://acme.example"
   },
   "digitalAssetKind": {
-    "type": "Property",
+    "type": "Text",
     "value": "Web"
   },
   "externalId": {
-    "type": "Property",
+    "type": "Text",
     "value": "properties/123456789"
   },
   "refBrand": {
-    "type": "Relationship",
-    "object": "urn:ngsi-ld:Brand:Acme"
+    "type": "Text",
+    "value": "urn:ngsi-ld:Brand:Acme"
   },
   "refSoftwareApplication": {
-    "type": "Relationship",
-    "object": "urn:ngsi-ld:SoftwareApplication:GoogleAnalytics4"
+    "type": "Text",
+    "value": "urn:ngsi-ld:SoftwareApplication:GoogleAnalytics4"
   }
 }

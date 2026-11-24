@@ -2,27 +2,30 @@
   "id": "urn:ngsi-ld:Brand:Acme",
   "type": "Brand",
   "name": {
-    "type": "Property",
+    "type": "Text",
     "value": "Acme"
   },
   "alternateName": {
-    "type": "Property",
+    "type": "Text",
     "value": "AcmeOne"
   },
   "description": {
-    "type": "Property",
+    "type": "Text",
     "value": "Digital marketing analytics platform operated by Acme Holdings S.L."
   },
   "businessSection": {
-    "type": "Property",
-    "value": ["62.01", "73.11"]
+    "type": "StructuredValue",
+    "value": [
+      "62.01",
+      "73.11"
+    ]
   },
   "url": {
-    "type": "Property",
+    "type": "Text",
     "value": "https://acme.example"
   },
   "refOrganization": {
-    "type": "Relationship",
-    "object": "urn:ngsi-ld:Organization:ES-B12345678"
+    "type": "Text",
+    "value": "urn:ngsi-ld:Organization:ES-B12345678"
   }
 }

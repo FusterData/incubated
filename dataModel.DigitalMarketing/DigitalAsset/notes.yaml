@@ -1,12 +1,34 @@
-name: DigitalAsset
-description: >
-  A concrete digital asset (web site, mobile app, social media profile, search
-  engine listing, paid-ads account, etc.) that belongs to a Brand and is
-  observed through a specific SoftwareApplication. One Brand can group several
-  DigitalAssets; each channel is observed by exactly one SoftwareApplication.
-version: 0.0.1
-status: incubated
-contributors:
-  - LIN3S
-references:
-  - https://schema.org/SoftwareApplication
+notesHeader: |
+  A `DigitalAsset` is a concrete digital asset of a `Brand`, observed through
+  one `SoftwareApplication`: the GA4 property of a corporate web site, a
+  LinkedIn organization page, a paid-ads account on Google Ads, an Android app
+  on Play Store... One `Brand` can group several `DigitalAsset` entities.
+
+notesMiddle: |
+  Recommended identifier:
+  `urn:ngsi-ld:DigitalAsset:<Brand>-<Software>[-<suffix>]`. The suffix is only
+  needed when the same brand has several assets on the same
+  `SoftwareApplication`.
+
+  `refBrand` points to exactly one `Brand` and `refSoftwareApplication` to
+  exactly one `SoftwareApplication` (schema.org), the tool used to measure or
+  operate the asset.
+
+  `digitalAssetUrl` is the URL of the asset itself (the measured page, the
+  profile, the app store entry). It differs from `Brand.url`, which is the
+  landing of the brand.
+
+notesFooter: |
+  The NACE sector is not declared on `DigitalAsset`. It lives on `Brand`, and
+  all the assets of a brand inherit it.
+
+  Same asset measured by several tools. When the same asset (for instance,
+  one web site) is measured in parallel by two `SoftwareApplication` (GA4 and
+  another analytics tool), there are two `DigitalAsset` entities, one per
+  tool, each with its own stream of `DigitalAssetMetric` observations. Adding
+  the metrics of both counts the same traffic twice: consumers choose one
+  source per metric, or use both as independent measurements.
+
+notesReadme: |
+  Concrete digital asset of a Brand (web, app, social profile, paid-ads
+  account...) observed through one SoftwareApplication.
